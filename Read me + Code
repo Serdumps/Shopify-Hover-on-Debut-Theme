@@ -1,0 +1,43 @@
+Add the code below code to the bottom of Theme.scss.liquid which is located under Assets folder:
+
+/* ====== Product image swap module ====== */
+
+.product-card__hover-image img.product-hover_image { display: none; }
+li.grid__item:hover img.product-hover_image { display: block; position: absolute; top: 0px; }
+div.grid-view-item:hover img.grid-view-item__image { display: none; }
+
+
+
+
+Look for this code in Product-card-grid.liquid  under the Snippets folder.
+
+          <img id="{{ img_id }}"
+                class="grid-view-item__image lazyload"
+                alt="{{ preview_image.alt }}"
+                data-src="{{ img_url }}"
+                data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                data-aspectratio="{{ preview_image.aspect_ratio }}"
+                data-sizes="auto"
+                data-image>
+*/
+
+
+
+
+
+Replace the code above with the code below:
+
+          <div class="product-card__hover-image">
+              <img id="{{ img_id }}"
+                    class="grid-view-item__image lazyload"
+                    alt="{{ preview_image.alt }}"
+                    data-src="{{ img_url }}"
+                    data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                    data-aspectratio="{{ preview_image.aspect_ratio }}"
+                    data-sizes="auto"
+                    data-image>
+              <img class="product-hover_image" src="{{ product.images[1] | img_url: '450x450' }}" alt="{{ product.images[1].alt | escape }}" />
+          </div>
+
+
+THE END. Please don’t forget to subscribe and donate. I just saved you $5 a month for X number of months. Enjoy! 
